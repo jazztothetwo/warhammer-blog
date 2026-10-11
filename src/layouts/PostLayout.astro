@@ -5,50 +5,50 @@ const { title, date, description, cover } = Astro.props;
 ---
 
 <BaseLayout title={`${title} | Jarrod's Warhammer Blog`}>
-    <article class="post">
-        <a href="/">← All posts</a>
+	<article class="post">
+		<a href="/">← All posts</a>
 
-        <header>
-            <h1>{title}</h1>
-            <time datetime={date.toISOString()}>
-                {date.toLocaleDateString("en-AU", {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-                timeZone: "UTC",
-                })}
-            </time>
-            <p>{description}</p>
-        </header>
-        {cover && (
-            <img class="post-cover" src={cover} alt="" />
-        )}
-        <div class="post-body">
-            <slot />
-        </div>
-    </article>
+		<header>
+			<h1>{title}</h1>
+			<time datetime={date.toISOString()}>
+				{
+					date.toLocaleDateString("en-AU", {
+						day: "numeric",
+						month: "long",
+						year: "numeric",
+						timeZone: "UTC",
+					})
+				}
+			</time>
+			<p>{description}</p>
+		</header>
+		{cover && <img class="post-cover" src={cover} alt="" />}
+		<div class="post-body">
+			<slot />
+		</div>
+	</article>
 </BaseLayout>
 
 <style>
-    .post {
-        max-width: 48rem;
-        margin-inline: auto;
-    }
+	.post {
+		max-width: 48rem;
+		margin-inline: auto;
+	}
 
-    header {
-        margin-block: 2rem;
-    }
+	header {
+		margin-block: 2rem;
+	}
 
-    .post-cover {
-        display: block;
-        width: 100%;
-        max-width: 32rem;
-        height: auto;
-        margin-block: 2rem;
-    }
+	.post-cover {
+		display: block;
+		width: 100%;
+		max-width: 32rem;
+		height: auto;
+		margin-block: 2rem;
+	}
 
-    .post-body :global(img) {
-        max-width: 100%;
-        height: auto;
-    }
+	.post-body :global(img) {
+		max-width: 100%;
+		height: auto;
+	}
 </style>

@@ -3,60 +3,108 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
 const posts = await getCollection(
-    "posts",
-    ({ data }) => import.meta.env.DEV || !data.draft
+	"posts",
+	({ data }) => import.meta.env.DEV || !data.draft,
 );
 
 posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <BaseLayout title="Jarrod's Warhammer Blog">
-    <header>
-        <h1>Jarrod's Warhammer Blog</h1>
-        <p>Painting, collecting, and working through the pile of shame.</p>
-    </header>
+	<header>
+		<h1>Jarrod's Warhammer Blog</h1>
+		<p>Painting, collecting, and working through the pile of shame.</p>
+	</header>
 
-    <section>
-        <h2>Latest posts</h2>
-        {
-            posts.length > 0 ? (
-                posts.map((post) => (
-                <article>
-                    {post.data.cover && (
-                        <img
-                            class="post-cover"
-                            src={post.data.cover}
-                            alt=""
-                            loading="lazy"
-                        />
-                    )}
-                    <h3>
-                        <a href={`/posts/${post.id}/`}>{post.data.title}</a>
-                    </h3>
-                    <time datetime={post.data.date.toISOString()}>
-                    {post.data.date.toLocaleDateString("en-AU", {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                        timeZone: "UTC",
-                    })}
-                    </time>
-                    <p>{post.data.description}</p>
-                    {post.data.draft && <p>Draft — local preview only</p>}
-                </article>
-                ))
-            ) : (
-                <p>My first hobby journal entry is coming soon.</p>
-            )
-        }
-    </section>
+	<section>
+		<h2>Latest posts</h2>
+		{
+			posts.length > 0 ? (
+				posts.map((post) => (
+					<article
+						class:list={[
+							"post-preview",
+							{ "has-cover": Boolean(post.data.cover) },
+						]}
+					>
+						{post.data.cover && (
+							<a 
+								href={`/posts/${post.id}/`}
+								aria-label={`Read ${post.data.title}`}
+							>							
+								<img
+									class="post-cover"
+									src={post.data.cover}
+									alt=""
+									loading="lazy"
+								/>
+							</a>
+						)}
+						<div class="post-summary">
+							<h3>
+								<a href={`/posts/${post.id}/`}>
+									{post.data.title}
+								</a>
+							</h3>
+							<time datetime={post.data.date.toISOString()}>
+								{post.data.date.toLocaleDateString("en-AU", {
+									day: "numeric",
+									month: "long",
+									year: "numeric",
+									timeZone: "UTC",
+								})}
+							</time>
+							<p>{post.data.description}</p>
+							{post.data.draft && <p>Draft — local preview only</p>}
+						</div>
+					</article>
+				))
+			) : (
+				<p>My first hobby journal entry is coming soon.</p>
+			)
+		}
+	</section>
 </BaseLayout>
 
 <style>
-    .post-cover {
-        display: block;
-        width: 100%;
-        max-width: 20rem;
-        height: auto;
-    }
+	.post-preview {
+		padding-block: 1.5rem;
+		border-top: 1px solid #34465e;
+	}
+
+	.post-preview.has-cover {
+		display: grid;
+		grid-template-columns: 12rem minmax(0, 1fr);
+		gap: 1.5rem;
+		align-items: start;
+	}
+
+	.post-cover {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	.post-summary h3 {
+		margin: 0 0 0.5rem;
+		font-size: 1.5rem;
+	}
+
+	.post-summary time {
+		font-size: 0.9rem;
+	}
+
+	.post-summary p {
+		margin: 0.75rem 0 0;
+	}
+
+	@media (max-width: 700px) {
+		.post-preview.has-cover {
+			grid-template-columns: 1fr;
+		}
+
+		.post-cover {
+			max-width: 20rem;
+		}
+	}
 </style>
