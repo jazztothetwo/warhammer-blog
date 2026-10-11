@@ -1,0 +1,48 @@
+---
+const { title = "Jarrod's Warhammer Blog" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{title}</title>
+    </head>
+    <body>
+        <main>
+        <slot />
+        </main>
+    </body>
+</html>
+
+<style is:global>
+    :root {
+        --background: #101b2b;
+        --text: #e8edf3;
+        --accent: #9fc5ed;
+    }
+
+    body {
+        margin: 0;
+        background: var(--background);
+        color: var(--text);
+        font-family: system-ui, sans-serif;
+        line-height: 1.6;
+    }
+
+    main {
+        max-width: 64rem;
+        margin-inline: auto;
+        padding: 3rem 1.5rem;
+    }
+
+    a {
+        color: var(--accent);
+    }
+
+    a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 4px;
+    }
+</style>

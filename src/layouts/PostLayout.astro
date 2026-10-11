@@ -1,0 +1,37 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+const { title, date, description } = Astro.props;
+---
+
+<BaseLayout title={`${title} | Jarrod's Warhammer Blog`}>
+    <article class="post">
+        <a href="/">← All posts</a>
+
+    <header>
+        <h1>{title}</h1>
+        <time datetime={date.toISOString()}>
+            {date.toLocaleDateString("en-AU", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+            timeZone: "UTC",
+            })}
+        </time>
+        <p>{description}</p>
+    </header>
+
+    <slot />
+  </article>
+</BaseLayout>
+
+<style>
+    .post {
+        max-width: 48rem;
+        margin-inline: auto;
+    }
+
+    header {
+        margin-block: 2rem;
+    }
+</style>
