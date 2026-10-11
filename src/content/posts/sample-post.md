@@ -4,6 +4,8 @@ date: 2026-10-10
 description: "A temporary post for testing the blog."
 tags:
   - Testing
+  - Testing 2
+  - Testing 3
 draft: true
 cover: "https://images.jarrodscherer.au/personal/avatar_resized.png"
 ---

@@ -28,10 +28,10 @@ posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 						]}
 					>
 						{post.data.cover && (
-							<a 
+							<a
 								href={`/posts/${post.id}/`}
 								aria-label={`Read ${post.data.title}`}
-							>							
+							>
 								<img
 									class="post-cover"
 									src={post.data.cover}
@@ -55,8 +55,17 @@ posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 								})}
 							</time>
 							<p>{post.data.description}</p>
-							{post.data.draft && <p>Draft — local preview only</p>}
+							{post.data.draft && (
+								<p>Draft — local preview only</p>
+							)}
 						</div>
+						{post.data.tags.length > 0 && (
+							<ul class="post-tags" aria-label="Post tags">
+								{post.data.tags.map((tag) => (
+									<li>{tag}</li>
+								))}
+							</ul>
+						)}
 					</article>
 				))
 			) : (
@@ -67,18 +76,6 @@ posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 </BaseLayout>
 
 <style>
-	.post-preview {
-		padding-block: 1.5rem;
-		border-top: 1px solid #34465e;
-	}
-
-	.post-preview.has-cover {
-		display: grid;
-		grid-template-columns: 12rem minmax(0, 1fr);
-		gap: 1.5rem;
-		align-items: start;
-	}
-
 	.post-cover {
 		display: block;
 		width: 100%;
@@ -97,10 +94,43 @@ posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 	.post-summary p {
 		margin: 0.75rem 0 0;
 	}
+	.post-preview {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 10rem;
+		gap: 1.5rem;
+		padding-block: 1.5rem;
+		border-top: 1px solid #34465e;
+		align-items: start;
+	}
 
+	.post-preview.has-cover {
+		grid-template-columns: 12rem minmax(0, 1fr) 10rem;
+	}
+
+	.post-tags {
+		grid-column: -2 / -1;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.post-tags li {
+		padding: 0.25rem 0.65rem;
+		border: 1px solid #34465e;
+		border-radius: 0.25rem;
+		font-size: 0.85rem;
+	}
 	@media (max-width: 700px) {
+		.post-preview,
 		.post-preview.has-cover {
 			grid-template-columns: 1fr;
+		}
+
+		.post-tags {
+			grid-column: auto;
 		}
 
 		.post-cover {
