@@ -13,12 +13,3 @@ cover: "https://images.jarrodscherer.au/personal/avatar_resized.png"
 This is temporary content to test the blog layout.
 
 ## A section heading
-
-Testing how wide the post can be f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f 
-
-A paragraph with **bold text** and *italic text*.
-
-- First item
-- Second item
-
-![My crowned dragon avatar](https://images.jarrodscherer.au/personal/avatar_resized.png)
