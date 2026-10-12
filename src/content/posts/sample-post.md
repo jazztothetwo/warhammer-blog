@@ -6,7 +6,7 @@ tags:
   - Testing
   - Testing 2
   - Testing 3
-draft: true
+draft: false
 cover: "https://images.jarrodscherer.au/personal/avatar_resized.png"
 ---
 
