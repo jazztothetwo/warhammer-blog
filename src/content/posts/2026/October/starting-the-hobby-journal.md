@@ -12,8 +12,6 @@ Welcome to my Warhammer blog. I'm Jarrod, and this is where I'll keep a record o
 
 The idea is simple: take a few photos, write down what happened, and give each project somewhere to live beyond the painting desk. Finished models will get their moment, but I want to make room for the steps along the way too. A colour scheme taking shape, a base coming together, or a model that still needs another evening of work are all worth an update.
 
-<!-- Optional desk photo here. See docs/first-post-images.md for image guidance. -->
-
 ## What you'll find here
 
 This will be a hobby journal, with painting and collecting at the centre of it. I'll share work in progress, finished miniatures, and notes on the choices that went into them.
