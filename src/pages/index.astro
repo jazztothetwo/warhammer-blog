@@ -37,6 +37,8 @@ posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 									src={post.data.cover}
 									alt=""
 									loading="lazy"
+									width={post.data.coverWidth}
+									height={post.data.coverHeight}
 								/>
 							</a>
 						)}

@@ -6,6 +6,9 @@ tags:
   - Hobby journal
 draft: false
 cover: https://images.jarrodscherer.au/2026/October/starting-the-hobby-journal/hobby-desk.webp
+coverAlt: "Two Space Marine bikes on my hobby desk beside paints and brushes."
+coverWidth: 1600
+coverHeight: 1000
 ---
 
 Welcome to my Warhammer blog. I'm Jarrod, and this is where I'll keep a record of what I'm painting, collecting, playing, and working on.

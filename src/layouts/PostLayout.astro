@@ -1,10 +1,33 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 
-const { title, date, description, cover } = Astro.props;
+interface Props {
+    title: string;
+    date: Date;
+    description: string;
+    cover?: string;
+    coverAlt?: string;
+    coverWidth?: number;
+    coverHeight?: number;
+    tags?: string[];
+}
+
+const {
+	title,
+	date,
+	description,
+	cover,
+	coverAlt,
+	coverWidth,
+	coverHeight,
+	tags = [],
+} = Astro.props;
 ---
 
-<BaseLayout title={`${title} | Jarrod's Warhammer Blog`}>
+<BaseLayout
+	title={`${title} | Jarrod's Warhammer Blog`}
+	description={description}
+>
 	<article class="post">
 		<a href="/">← All posts</a>
 
@@ -21,8 +44,27 @@ const { title, date, description, cover } = Astro.props;
 				}
 			</time>
 			<p>{description}</p>
+			{
+				tags.length > 0 && (
+					<ul class="post-tags" aria-label="Post tags">
+						{tags.map((tag) => (
+							<li>{tag}</li>
+						))}
+					</ul>
+				)
+			}
 		</header>
-		{cover && <img class="post-cover" src={cover} alt="" />}
+		{
+			cover && (
+				<img
+					class="post-cover"
+					src={cover}
+					alt={coverAlt ?? ""}
+					width={coverWidth}
+					height={coverHeight}
+				/>
+			)
+		}
 		<div class="post-body">
 			<slot />
 		</div>
@@ -75,5 +117,21 @@ const { title, date, description, cover } = Astro.props;
 	.post-body :global(ul),
 	.post-body :global(ol) {
 		margin-block: 0 1.25rem;
+	}
+
+	.post-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin: 1rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.post-tags li {
+		padding: 0.25rem 0.65rem;
+		border: 1px solid #34465e;
+		border-radius: 0.25rem;
+		font-size: 0.85rem;
 	}
 </style>
