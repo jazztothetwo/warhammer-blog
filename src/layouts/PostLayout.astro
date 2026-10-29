@@ -2,14 +2,14 @@
 import BaseLayout from "./BaseLayout.astro";
 
 interface Props {
-    title: string;
-    date: Date;
-    description: string;
-    cover?: string;
-    coverAlt?: string;
-    coverWidth?: number;
-    coverHeight?: number;
-    tags?: string[];
+	title: string;
+	date: Date;
+	description: string;
+	cover?: string;
+	coverAlt?: string;
+	coverWidth?: number;
+	coverHeight?: number;
+	tags?: string[];
 }
 
 const {
@@ -133,5 +133,64 @@ const {
 		border: 1px solid #34465e;
 		border-radius: 0.25rem;
 		font-size: 0.85rem;
+	}
+	/* Prevent long text and URLs from widening the page. */
+	.post-body {
+		overflow-wrap: anywhere;
+	}
+
+	/* Give tables space and their own horizontal scrolling. */
+	.post-body :global(table) {
+		display: block;
+		max-width: 100%;
+		overflow-x: auto;
+		border-collapse: collapse;
+		margin-block: 1.5rem;
+		overflow-wrap: normal;
+	}
+
+	.post-body :global(th),
+	.post-body :global(td) {
+		padding: 0.6rem 0.9rem;
+		border: 1px solid #34465e;
+	}
+
+	.post-body :global(th) {
+		background: #1b2a3e;
+	}
+
+	/* Keep code readable, preserving its formatting. */
+	.post-body :global(pre) {
+		padding: 1rem;
+		border-radius: 0.4rem;
+		overflow-x: auto;
+		overflow-wrap: normal;
+	}
+
+	.post-body :global(:not(pre) > code) {
+		padding: 0.15em 0.35em;
+		background: #1b2a3e;
+		border-radius: 0.2rem;
+	}
+
+	/* Make quotations visually distinct. */
+	.post-body :global(blockquote) {
+		margin-inline: 0;
+		padding-left: 1rem;
+		border-left: 3px solid #9fc5ed;
+	}
+
+	/* Remove bullets beside task checkboxes. */
+	.post-body :global(.task-list-item) {
+		list-style: none;
+	}
+
+	/* Style keyboard shortcut labels. */
+	.post-body :global(kbd) {
+		padding: 0.15em 0.4em;
+		border: 1px solid #53657c;
+		border-radius: 0.25rem;
+		background: #1b2a3e;
+		font-size: 0.85em;
 	}
 </style>
