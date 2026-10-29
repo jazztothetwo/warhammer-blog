@@ -31,6 +31,9 @@ Draft posts appear during development but are excluded from production builds.
 
 Create a Markdown file under `src/content/posts/`.
 
+Copy [POST_TEMPLATE.md](POST_TEMPLATE.md) as a starting point, rename the copy,
+and fill in the title, date, description, and post text.
+
 Posts can be organised into year and month folders:
 
 ```text
