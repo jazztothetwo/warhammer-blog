@@ -4,11 +4,7 @@ date: 2026-10-17
 description: "A test file to see markdown formatting."
 tags:
   - Test
-draft: false
-cover: "https://images.jarrodscherer.au/2026/October/starting-the-hobby-journal/hobby-desk.webp"
-coverAlt: "Two Space Marine bikes on my hobby desk beside paints and brushes."
-coverWidth: 1600
-coverHeight: 1000
+draft: true
 ---
 
 # Markdown Formatting Test
